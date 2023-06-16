@@ -15,7 +15,6 @@ function countWords ($rows) {
         // create a long string with join
         $string = join('',$rows);
         $words = preg_split('/\s+|[\.|\,|\?|\!]/', $string);;
-        //$string = preg_replace('/[?|.|!|;|,]?/', '', $string);
         $words = array_map('strtolower', $words);
 
         // Create a hash with the count value of each word set to zero
@@ -37,12 +36,12 @@ function countWords ($rows) {
                 echo "$m) $word => $count <br>\n";
                 $m++;
         }
-echo "<br><strong>There are ". $unique." unique words:</strong><br>\n";
+        echo "<br><strong>There are ". $unique." unique words:</strong><br>\n";
         foreach($dict as $word => $count) {
                 if ($count > 1) {
                         echo "There are $count instances of $word.<br>\n";
                 } else {
-                                        echo "There is $count instance of $word.<br>\n";
+                         echo "There is $count instance of $word.<br>\n";
                 }
         }
 }
@@ -54,7 +53,6 @@ function countLetters ($rows) {
         // create a long string with join
         $string = join('',$rows);
         $string = preg_replace('/\s+|[?|.|!|;|,|\'|\"]?/', '', $string);
-        //$words = preg_split('/\s+|[\.|\,|\?|\!|\'|\"]/', $string);;
         $letters = preg_split('//', $string);;
         $letters = array_map('strtolower', $letters);
 
@@ -76,7 +74,7 @@ function countLetters ($rows) {
                 echo "$m) $abc => $count <br>\n";
                 $m++;
         }
-print "<hr>";
+        print "<hr>";
         foreach($dict as $abc => $count) {
                 if ( ctype_alpha($abc)) {
                   if ($count > 1) {
@@ -117,6 +115,7 @@ if ($html_file === false) {
 } else {
         // Parsing the text file into an array
         $rows = explode("\n", $html_file);
+        
         // Removing empty rows
         $rows = array_values(array_filter($rows, fn($value) => !empty($value) && !is_null($value)  && $value !== '' && strlen(trim($value)) > 0));
 
