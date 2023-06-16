@@ -106,8 +106,8 @@ if (filter_var($url, FILTER_VALIDATE_URL) === false) {
 }
 
 echo "<span class='m'>Fetching contents from URL: " . $url."</span>" ;
-//$html_file = file_get_contents($url);
-$html_file = file_get_contents('testfile.txt');
+$html_file = file_get_contents($url);
+//$html_file = file_get_contents('testfile.txt');
 
 if ($html_file === false) {
         if (isset($http_response_header)){
